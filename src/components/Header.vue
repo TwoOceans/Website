@@ -4,7 +4,6 @@
     <header class='site-header'>
         <div class='logo'>
             <img src='/src/assets/images/favicon.avif' alt='Two Oceans' />
-            <p>Two Oceans</p>
         </div>
         <nav>
             <ul>
