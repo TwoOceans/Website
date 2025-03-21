@@ -36,6 +36,10 @@ function showGallery() {
             <li><img src='/src/assets/images/wide_2.avif'></li>
             <li><img src='/src/assets/images/wide_3.avif'></li>
             <li><img src='/src/assets/images/wide_4.avif'></li>
+            <li><img src='/src/assets/images/greens_22.avif'></li>
+            <li><img src='/src/assets/images/greens_23.avif'></li>
+            <li><img src='/src/assets/images/greens_24.avif'></li>
+            <li><img src='/src/assets/images/greens_25.avif'></li>
             <li><img src='/src/assets/images/wide_5.avif'></li>
             <li><img src='/src/assets/images/wide_6.avif'></li>
             <li><img src='/src/assets/images/wide_7.avif'></li>
@@ -62,6 +66,8 @@ function showGallery() {
             <li><img src="/src/assets/images/wide_28.avif"/></li>
             <li><img src="/src/assets/images/wide_29.avif"/></li>
             <li><img src="/src/assets/images/wide_30.avif"/></li>
+            <li><img src='/src/assets/images/flowers_5.avif'></li>
+            <li><img src='/src/assets/images/fish_and_chips.avif'></li>
         </ul>
     </div>
     <About></About>
