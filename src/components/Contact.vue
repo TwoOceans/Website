@@ -12,7 +12,6 @@ onMounted(() => {
         const target = L.latLng(-34.5209238, 20.0476116)
         map.setView(target, 15)
         L.marker(target).addTo(map)
-        console.log(L)
     }
 })
 
