@@ -3,7 +3,7 @@ name: Build and deploy
 on:
   push:
     branches: [main]
-    paths: [index.html, package.json, bun.lock, vite.config.ts, tsconfig.*, src/**]
+    paths: [index.html, package.json, bun.lock, wrangler.toml, vite.config.ts, tsconfig.*, src/**]
   workflow_dispatch:
 
 concurrency:
@@ -30,50 +30,35 @@ jobs:
       - name: Run build
         run: bun run build
 
-      - name: Push
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: dist
-          FOLDER: dist
-          COMMIT_NAME: github-actions[bot]
-          COMMIT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SQUASH_HISTORY: true
-
-      - name: Checkout dist branch
-        uses: actions/checkout@v4.2.2
+      - name: Upload dist folder
+        uses: actions/upload-artifact@v4.6.2
         with:
-          ref: dist
-          fetch-depth: 0
-
-      - name: Add CNAME
-        run: echo 'www.2oceans.farm' > CNAME
+          name: dist
+          path: dist
   deploy:
     needs: build
     permissions:
       contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      deployments: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Wrangler config
         uses: actions/checkout@v4.2.2
         with:
-          ref: 'dist'
-          lfs: true
+          sparse-checkout: wrangler.toml
+          sparse-checkout-cone-mode: false
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5.0.0
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3.0.1
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4.3.0
         with:
-          path: '.'
+          name: dist
+          path: dist
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4.0.5
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: latest
+          command: deploy
