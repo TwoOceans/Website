@@ -25,7 +25,7 @@
         "@vitejs/plugin-vue": "^6.0.0",
         "@vue/tsconfig": "^0.7.0",
         "sass-embedded": "^1.89.2",
-        "typescript": "~5.8.2",
+        "typescript": "~5.9.2",
         "vite": "^7.0.4",
         "vue-tsc": "^3.0.1",
         "wrangler": "^4.27.0"
