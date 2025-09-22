@@ -1,6 +1,7 @@
 name = '2oceans-site'
 compatibility_date = '2025-07-10'
 preview_urls = false
+workers_dev = false
 
 [assets]
 directory = './dist'
