@@ -22,7 +22,7 @@
     "devDependencies": {
         "@cloudflare/vite-plugin": "^1.21.2",
         "@types/leaflet": "^1.9.21",
-        "@vitejs/plugin-vue": "^6.0.3",
+        "@vitejs/plugin-vue": "^6.0.4",
         "@vue/tsconfig": "^0.8.1",
         "sass-embedded": "^1.97.3",
         "typescript": "~5.9.3",
