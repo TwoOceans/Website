@@ -24,7 +24,7 @@
         "@types/leaflet": "^1.9.21",
         "@vitejs/plugin-vue": "^6.0.5",
         "@vue/tsconfig": "^0.9.0",
-        "sass-embedded": "^1.98.0",
+        "sass-embedded": "^1.99.0",
         "typescript": "~6.0.2",
         "vite": "^8.0.3",
         "vue-tsc": "^3.2.6",
